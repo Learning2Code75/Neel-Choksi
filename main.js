@@ -1,6 +1,8 @@
 import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+const { BASE_URL } = import.meta.env;
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -51,11 +53,12 @@ function addStar() {
 }
 
 Array(200).fill().forEach(addStar);
-
-const spaceTexture = new THREE.TextureLoader().load("space_texture.jpeg");
+let img_url1 = `${BASE_URL}space_texture.jpeg`;
+const spaceTexture = new THREE.TextureLoader().load(img_url1);
 scene.background = spaceTexture;
 
-const neelTexture = new THREE.TextureLoader().load("neel_profile.jpg");
+let img_url2 = `${BASE_URL}neel_profile.jpg`;
+const neelTexture = new THREE.TextureLoader().load(img_url2);
 const neel = new THREE.Mesh(
   new THREE.BoxGeometry(2, 2, 2),
   new THREE.MeshBasicMaterial({ map: neelTexture })
@@ -63,7 +66,8 @@ const neel = new THREE.Mesh(
 
 scene.add(neel);
 
-const moonTexture = new THREE.TextureLoader().load("neel_profile.png");
+let img_url3 = `${BASE_URL}neel_profile.png`;
+const moonTexture = new THREE.TextureLoader().load(img_url3);
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
